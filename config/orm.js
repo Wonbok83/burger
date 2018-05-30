@@ -21,7 +21,7 @@ var orm = {
         console.log(queryString);
 
         connection.query(queryString, function (err, result) {
-            if (err) {          //why does val need to be here 
+            if (err) {          
                 throw err;
             }
 
