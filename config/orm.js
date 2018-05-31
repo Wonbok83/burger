@@ -4,18 +4,27 @@ var connection = require("../config/connection.js");
 var orm = {
 
     selectAll: function (tableName, cb) {
-        var queryString = "SELECT * FROM ?? ";
-        connection.query(queryString, [tableName], function (err, result) {
-            if (err) throw err;
-            cb(result)
-        });
+        // var queryString = "SELECT * FROM ?? ";
+        // connection.query(queryString, [tableName], function (err, result) {
+        //     if (err) throw err;
+        //     console.log("result:  ",result);
+        //     cb(result);
+       // });
+       var queryString = "SELECT * FROM " + tableName + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      console.log("result:  ", result);
+      cb(result);
+    });
     },
 
-    insertOne: function (tableName, col, val, cb) {
+    insertOne: function (tableName, val, cb) {
         var queryString = "INSERT INTO " + tableName;
 
-        queryString += " (" + col + ") ";
-        queryString += "VALUES (" + val + ") ";
+        queryString += " (burger_name) ";
+        queryString += "VALUES ('" + val + "'); ";
 
 
         console.log(queryString);
@@ -29,10 +38,10 @@ var orm = {
         });
     },
 
-    updateOne: function (tableName, col, val, cond, cb) {
+    updateOne: function (tableName,  cond, cb) {
         var queryString = "UPDATE " + tableName;
 
-        queryString += "SET " + col + "=" + val;
+        queryString += "SET devoured = true";
         queryString += "WHERE " + cond;
 
         connection.query(queryString, function (err, result){

@@ -1,10 +1,10 @@
 $(function () {
 
-    $.ajax("/",{
-        type: "GET"
-    }).then(function(){
-        location.reload();
-    });
+    // $.get("/",{
+    //     type: "GET"
+    // }).then(function(){
+     
+    // });
 
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
@@ -20,7 +20,7 @@ $(function () {
             data: newBurger
         }).then(function () {
             console.log("New Burger")
-            location.reload();
+         
         })
 
 
@@ -40,7 +40,7 @@ $(function () {
         }).then(
             function(){
             console.log("change the devoured")
-            location.reload();
+            
             }
         )
     })

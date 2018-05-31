@@ -8,17 +8,13 @@ var burger = {
         });
     },
     
-     insertOne: function(col, val, cb) {
-        orm.insertOne("burgers", col, val, function(res){
-            cb(res);
-        });
-    },
+     insertOne: function(val, cb) {
+        orm.insertOne("burgers", val,cb);
+       },
     
-     updateOne: function(col, val, cond, cb) {
-        orm.updateOne("burgers", col, val, cond, function(res){
-            cb(res);
-        });
+     updateOne: function(id, cb) {
+        orm.updateOne("burgers", id, cb);
     }
 }
 
-module.exports = burger;
+module.exports = burger; 
